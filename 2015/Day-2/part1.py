@@ -12,7 +12,7 @@ def sa(lengths):
 def run(data):
     data = splitOn(data, "\n")
     data = splitOn(data, "x")
-    data = toInts(data)
+    data = mapAll(data, int)
     return sum(map(sa, data))
 
 with open("input.txt") as f:
