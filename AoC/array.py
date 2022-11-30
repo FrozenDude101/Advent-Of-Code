@@ -1,5 +1,11 @@
 class Array(list):
 
+    """
+        Adds operator chaining to lists.
+        Allows methods like .map, .filter, .append, e.t.c to always return the next list.
+        Allows javascript style chaining.
+    """
+
     __add__  = lambda self, n: Array(super().__add__(n))
     __iadd__ = lambda self, n: Array(super().__iadd__(n))
     __imul__ = lambda self, n: Array(super().__imul__(n))
@@ -36,11 +42,9 @@ class Array(list):
         return c
 
     def sort(self, key = None, reverse = False, ):
-
         c = self.copy()
         list.sort(c, key=key, reverse=reverse)
         return c
-    
 
     def map(self, func):
         return Array(map(func, self))
