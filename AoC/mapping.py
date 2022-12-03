@@ -1,4 +1,4 @@
-from AoC.equality import isArray
+from .equality import isArray
 
 
 def mapAll(value, func):
@@ -14,6 +14,7 @@ def splitOn(value, splitChar):
     if isArray(value):
         return list(map(lambda val: splitOn(val, splitChar), value))
 
+    if splitChar == "": return list(value)
     return value.split(splitChar)
 
 
@@ -38,5 +39,14 @@ def grouped(value, type = None):
 
     if type is not None:
         ret = mapAll(ret, type)
+
+    return ret
+
+
+def groupN(iter, groupSize):
+
+    ret = []
+    for i in range(0, len(iter), groupSize):
+        ret.append(iter[i:i+groupSize])
 
     return ret
