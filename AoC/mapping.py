@@ -18,17 +18,20 @@ def splitOn(value, splitChar):
     return value.split(splitChar)
 
 
-def splitMultiple(value, splits, types = None):
+def splitMultiple(value, splits, left = True, right = True, types = None):
 
     value = [None, value]
     ret = []
 
     for i in range(len(splits)):
         value = value[1].split(splits[i])
-        if types != None and len(types) > i:
-            ret.append(types[i](value[0]))
-        else:
-            ret.append(value[0])
+        ret.append(value[0])
+    ret.append(value[1])
+
+    if not left:
+        ret = ret[1:]
+    if not right:
+        ret = ret[:-1]
 
     return ret
 
