@@ -21,3 +21,10 @@ _logging.basicConfig(
 from .Challenge import *
 
 from .getInput import *
+
+from .array import *
+from .equality import *
+from .grid import *
+from .mapping import *
+from .misc import *
+from .set import *
