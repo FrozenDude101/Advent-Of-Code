@@ -2,7 +2,7 @@ import logging as _logging
 import os as _os
 
 from .getInput import getInput as _getInput
-
+from .misc import copy as _copy
 
 class Challenge():
 
@@ -101,9 +101,10 @@ class Challenge():
 
         if part2 is None and part1 is not None:
             _logging.info("Only part 1 returned a value, copying it to the clipboard.")
+            _copy(part1)
         elif part1 is None and part2 is not None:
             _logging.info("Only part 2 returned a value, copying it to the clipboard.")
-
+            _copy(part2)
 
     def _executePart1(self, data):
         return self.part1(self.parse1(data))
