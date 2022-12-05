@@ -36,8 +36,8 @@ class Challenge():
         passed = 0
         total = 0
 
-        part1 = self._executePart1(testCase["input"])
-        if testCase["part1"] is not None and part1 is not None:
+        part1 = None if testCase["part1"] is None else self._executePart1(testCase["input"])
+        if part1 is not None:
             total += 1
             if testCase["part1"] == part1:
                 _logging.info(f"Passed {testCase['name']} part 1.")
@@ -50,8 +50,8 @@ class Challenge():
             else:
                 _logging.info(f"Part 1 return value is None. Skipping.")
 
-        part2 = self._executePart2(testCase["input"])
-        if testCase["part2"] is not None and part2 is not None:
+        part2 = None if testCase["part2"] is None else self._executePart2(testCase["input"])
+        if part2 is not None:
             total += 1
             if testCase["part2"] == part2:
                 _logging.info(f"Passed {testCase['name']} part 2.")
