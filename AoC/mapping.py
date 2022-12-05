@@ -24,7 +24,7 @@ def splitMultiple(value, splits, left = True, right = True, types = None):
     ret = []
 
     for i in range(len(splits)):
-        value = value[1].split(splits[i])
+        value = value[1].split(splits[i], 1)
         ret.append(value[0])
     ret.append(value[1])
 
