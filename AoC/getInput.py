@@ -1,5 +1,6 @@
 import logging as _logging
 import os as _os
+import sys as _sys
 import urllib3 as _urllib3
 
 
@@ -36,21 +37,22 @@ def getInput(year, day):
     match (request.status):
         case 400:
             _logging.critical(f"You have to set your session cookie in the .env file to retrieve your specific input.")
-            raise ValueError("Missing SESSION-COOKIE variable in environment. You can set it in the .env file.")
+            _sys.exit()
         case 404:
-            if "locked" in request.data.decode("utf-8"):
+            if "calender" in request.data.decode("utf-8"):
                 _logging.critical(f"The year {year}, day {day} challenge is still locked. You must wait for it to unlock before retrieving your input.")
-                raise ValueError("Invalid year/day combination, the challenge is still locked.")
             else:
                 _logging.critical(f"No challenge exists on year {year}, day {day}.")
-                raise ValueError("Invalid year/day combination, the challenge does not exist.")
+            _sys.exit()
         case 500:
             _logging.critical(f"Advent of Code returned a 500 server error. Make sure your session cookie is correct.")
-            raise ValueError("Missing SESSION-COOKIE variable in environment. You can set it in the .env file.")
+            _sys.exit()
 
     if request.status != 200:
-        _logging.critical(f("An unknown error has occured, please try agia."))
-        raise ValueError("Advent of Code did not return a 200 success code.")
+        _logging.critical(f("An unknown error has occured, please try agian."))
+        _logging.debug(f"Status: {request.status}")
+        _logging.debug(f"Data: {request.data.decode('utf-8')}")
+        _sys.exit()
 
     data = request.data.decode("utf-8")
     data = data[:-1]
