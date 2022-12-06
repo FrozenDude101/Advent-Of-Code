@@ -39,7 +39,7 @@ def getInput(year, day):
             _logging.critical(f"You have to set your session cookie in the .env file to retrieve your specific input.")
             _sys.exit()
         case 404:
-            if "calender" in request.data.decode("utf-8"):
+            if "synchronized" in request.data.decode("utf-8"):
                 _logging.critical(f"The year {year}, day {day} challenge is still locked. You must wait for it to unlock before retrieving your input.")
             else:
                 _logging.critical(f"No challenge exists on year {year}, day {day}.")
