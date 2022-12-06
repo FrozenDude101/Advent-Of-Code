@@ -27,4 +27,4 @@ from .equality import *
 from .grid import *
 from .mapping import *
 from .misc import *
-from .set import *
+from .setM import *
