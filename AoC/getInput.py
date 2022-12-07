@@ -40,7 +40,7 @@ def getInput(year, day):
             _sys.exit()
         case 404:
             if "synchronized" in request.data.decode("utf-8"):
-                _logging.critical(f"The year {year}, day {day} challenge is still locked. You must wait for it to unlock before retrieving your input.")
+                _logging.critical(f"The {year}, day {day} challenge is still locked. You must wait for it to unlock before retrieving your input.")
             else:
                 _logging.critical(f"No challenge exists on year {year}, day {day}.")
             _sys.exit()
